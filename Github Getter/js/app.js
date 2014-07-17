@@ -143,6 +143,9 @@ MIH.FEDTest = {
 				$details = dom.$details.empty();
 		
 		for (prop in data) {
+			if ('url' === prop) {
+				data[prop] = '<a href="'+ data[prop] +'" target="gh">Go to Repo</a>';
+			}
 			$tmpl.find('.'+prop).html(data[prop]);
 		}
 		
@@ -151,11 +154,8 @@ MIH.FEDTest = {
 	},
 	
 	closeOverlay: function(event) {
-		var $overlay = this.DOM.$details;
-		if ($overlay.is(':visible')) {
-			$overlay.hide('slow');
-			return event;
-		}
+		if ($(event.target).is('a')) return event;
+		this.DOM.$details.hide('slow');
 	},
 	
 	bindEvents: function() {
@@ -170,9 +170,9 @@ MIH.FEDTest = {
 	
 	events: {
 		'click #results-container li': 'getGitHubDetails',
+		'click #overlay-container': 'closeOverlay',
 		'click #search-submit': 'getGitHubResults',
-		'keyup #search': 'getGitHubResults',
-		'click body': 'closeOverlay'
+		'keyup #search': 'getGitHubResults'
 	},
 	
 	init: function() {

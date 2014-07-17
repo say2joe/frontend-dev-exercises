@@ -46,36 +46,36 @@ ul li.repo span {
 	padding: 7px;
 }
 
-.repo span.owner {
+.repo .owner {
 	opacity: 0.8;
 }
 
-.repo span.owner:before {
+.repo .owner:before {
 	content: "(Owner: "
 }
 
-.repo span.owner:after {
+.repo .owner:after {
 	content: ")"
 }
 
-.repo span.name:before {
+.repo .name:before {
 	content: "Repo: "
 }
 
-.repo span.url:before {
+.repo .url:before {
 	content: "URL: "
 }
 
-.repo span.description:before {
+.repo .description:before {
 	content: "Description: "
 }
 
-.repo span.followers:before {
+.repo .followers:before {
 	content: "Followers: "
 }
 
-.repo span.lang:before {
-	content: " | Lang: "
+.repo .language:before {
+	content: "Language: "
 }
 
 #search-submit { /* I'm using a data-uri backbround image for the right arrow indicator in the search field. While slightly larger (~2.5K) than the equivalent PNG (~1.8K), I've employed this technique merely for demonstration. */
@@ -101,9 +101,16 @@ ul li.repo span {
 }
 
 #overlay-container > .repo {
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.9);
 	position: relative;
+	color: white;
+	width: 100%;
 	left: -50%;
+}
+
+#overlay-container a {
+	color: white !important;
+	font-weight: bold;
 }
 
 .rwd-base {
