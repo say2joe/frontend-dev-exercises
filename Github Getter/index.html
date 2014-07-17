@@ -17,24 +17,31 @@
   <script src="js/app.js"></script>
 </head>
 <body id="FEDTest">
+	
 	<h1> GitHub Repoman </h1>
+	
 	<nav>
 		<input id="search" class="rwd-base" type="text" placeholder="Search Repos" maxlength="32" />
 		<input id="search-submit" type="image" alt="Search GitHub" src="icon-arrow-right.png" />
 	</nav>
+	
   <div id="results-container" class="rwd-base list"><ul></ul></div>
-  <div id="overlay-container" class="list"><ul></ul></div>
+  <div id="overlay-container" class="rwd-base list"></div>
+	
 	<template id="tmplResult">
 		<li class="repo">
-			<span class="name"/><span class="owner"/>
+			<span class="name"></span>
+			<span class="owner"></span>
 		</li>
 	</template>
 	<template id="tmplDetail">
-		<li class="repo">
-			<span class="url"/>			
-			<span class="lang"/><span class="followers"/>
-			<span class="description"/>
-		</li>
+		<div class="repo">
+			<span class="url"></span>
+			<span class="lang"></span>
+			<span class="followers"></span>
+			<span class="description"></span>
+		</div>
 	</template>
+	
 </body>
 </html>

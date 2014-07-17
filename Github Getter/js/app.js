@@ -17,8 +17,8 @@ MIH.FEDTest = {
 		var $el = this.$el;
 		return {
 			$input: $el.find("#search"),
+			$details: $el.find("#overlay-container"),
 			$results: $el.find("#results-container ul"),
-			$details: $el.find("#overlay-container ul"),
 			$tmplResult: $el.find("#tmplResult").html(),
 			$tmplDetail: $el.find("#tmplDetail").html()
 		};
@@ -131,7 +131,8 @@ MIH.FEDTest = {
 	
 	getGitHubDetails: function(event) {
 		console.info('Event called:', 'getGitHubDetails');
-		this.renderDetails(event.target.data('details'));
+		var $dataItem = $(event.target).closest('li');
+		this.renderDetails($dataItem.data('details'));
 		event.preventDefault();
 		return false;
 	},
@@ -147,6 +148,14 @@ MIH.FEDTest = {
 		
 		$details.empty().html($tmpl).show();
 		return $details;
+	},
+	
+	closeOverlay: function(event) {
+		var $overlay = this.DOM.$details;
+		if ($overlay.is(':visible')) {
+			$overlay.hide('slow');
+			return event;
+		}
 	},
 	
 	bindEvents: function() {

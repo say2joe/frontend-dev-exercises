@@ -46,35 +46,35 @@ ul li.repo span {
 	padding: 7px;
 }
 
-li.repo span.owner {
+.repo span.owner {
 	opacity: 0.8;
 }
 
-li.repo span.owner:before {
+.repo span.owner:before {
 	content: "(Owner: "
 }
 
-li.repo span.owner:after {
+.repo span.owner:after {
 	content: ")"
 }
 
-li.repo span.name:before {
+.repo span.name:before {
 	content: "Repo: "
 }
 
-li.repo span.url:before {
+.repo span.url:before {
 	content: "URL: "
 }
 
-li.repo span.description:before {
+.repo span.description:before {
 	content: "Description: "
 }
 
-li.repo span.followers:before {
+.repo span.followers:before {
 	content: "Followers: "
 }
 
-li.repo span.lang:before {
+.repo span.lang:before {
 	content: " | Lang: "
 }
 
@@ -94,7 +94,16 @@ li.repo span.lang:before {
 #overlay-container {
 	text-align: justify;
 	min-height: 100px;
+	position: fixed;
 	display: none;
+	left: 50%;
+	top: 33px;
+}
+
+#overlay-container > .repo {
+	background-color: rgba(0, 0, 0, 0.5);
+	position: relative;
+	left: -50%;
 }
 
 .rwd-base {
