@@ -1,4 +1,6 @@
 /* normalize.css has been included before this file */
+template { display: none; }
+
 
 /* The following are general styles applied to all devices. */
 body {
@@ -40,24 +42,40 @@ ul li:hover {
 	line-height: 2em;
 }
 
-ul li span {
+ul li.repo span {
 	padding: 7px;
 }
 
-li span.repo-owner {
+li.repo span.owner {
 	opacity: 0.8;
 }
 
-li span.repo-owner:before {
+li.repo span.owner:before {
 	content: "(Owner: "
 }
 
-li span.repo-owner:after {
+li.repo span.owner:after {
 	content: ")"
 }
 
-li span.repo-name:before {
+li.repo span.name:before {
 	content: "Repo: "
+}
+
+li.repo span.url:before {
+	content: "URL: "
+}
+
+li.repo span.description:before {
+	content: "Description: "
+}
+
+li.repo span.followers:before {
+	content: "Followers: "
+}
+
+li.repo span.lang:before {
+	content: " | Lang: "
 }
 
 #search-submit { /* I'm using a data-uri backbround image for the right arrow indicator in the search field. While slightly larger (~2.5K) than the equivalent PNG (~1.8K), I've employed this technique merely for demonstration. */

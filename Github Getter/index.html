@@ -23,6 +23,18 @@
 		<input id="search-submit" type="image" alt="Search GitHub" src="icon-arrow-right.png" />
 	</nav>
   <div id="results-container" class="rwd-base list"><ul></ul></div>
-  <div id="overlay-container" class="list"></div>
+  <div id="overlay-container" class="list"><ul></ul></div>
+	<template id="tmplResult">
+		<li class="repo">
+			<span class="name"/><span class="owner"/>
+		</li>
+	</template>
+	<template id="tmplDetail">
+		<li class="repo">
+			<span class="url"/>			
+			<span class="lang"/><span class="followers"/>
+			<span class="description"/>
+		</li>
+	</template>
 </body>
 </html>

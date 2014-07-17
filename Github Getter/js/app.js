@@ -18,8 +18,9 @@ MIH.FEDTest = {
 		return {
 			$input: $el.find("#search"),
 			$results: $el.find("#results-container ul"),
-			$details: $el.find("#overlay-container"),
-			$tmplResult: $('<div><li><span class="repo-name"/><span class="repo-owner"/></li></div>')
+			$details: $el.find("#overlay-container ul"),
+			$tmplResult: $el.find("#tmplResult").html(),
+			$tmplDetail: $el.find("#tmplDetail").html()
 		};
 	},
 	
@@ -70,7 +71,7 @@ MIH.FEDTest = {
 		
 		var data;
 		
-		this.query = this.DOM.$input.val();
+		this.query = this.DOM.$input.val() || this.defaults.github;
 		
 		if (data) {
 			
@@ -93,38 +94,59 @@ MIH.FEDTest = {
 			// Please wait message
 			
 		}
+		
+		event.preventDefault();
+		return false;
 	},
 	
 	renderResults: function(data) {
-		var strHTML = '',
-				dom = this.DOM,
+		var dom = this.DOM,
 				cache = this.cache,
 				query = this.query,
+				tmpl = dom.$tmplResult,
 				$results = dom.$results,
 				repos = data.repositories,
-				tmpl = dom.$tmplResult.html(),
 				queries = cache.get('queries');
 		
 		cache.set('queries', queries.push(query));
 		cache.set(query, repos);
+		$results.empty();
 		
 		repos.forEach(function(v) {
-			var $docfrag = $('<div/>').html(tmpl);
-			$docfrag.find('.repo-name').html(v.name);
-			$docfrag.find('.repo-owner').html(v.owner);
-			strHTML += $docfrag.html();
+			var $docfrag = $(tmpl);
+			$docfrag.find('.name').html(v.name);
+			$docfrag.find('.owner').html(v.owner);
+			$docfrag.data('details', {
+				url: v.url,
+				language: v.language,
+				followers: v.followers,
+				description: v.description
+			});
+			$results.append($docfrag);
 		});
 		
-		$results.empty().html(strHTML);
 		$results.parent().show('slow');
+		return $results;
 	},
 	
-	getGitHubDetails: function() {		
+	getGitHubDetails: function(event) {
 		console.info('Event called:', 'getGitHubDetails');
+		this.renderDetails(event.target.data('details'));
+		event.preventDefault();
+		return false;
 	},
 	
 	renderDetails: function(data) {
-		return data;
+		var prop, dom = this.DOM,
+				$tmpl = $(dom.$tmplDetail),
+				$details = dom.$details.empty();
+		
+		for (prop in data) {
+			$tmpl.find('.'+prop).html(data[prop]);
+		}
+		
+		$details.empty().html($tmpl).show();
+		return $details;
 	},
 	
 	bindEvents: function() {
@@ -140,11 +162,12 @@ MIH.FEDTest = {
 	events: {
 		'click #results-container li': 'getGitHubDetails',
 		'click #search-submit': 'getGitHubResults',
-		'keyup #search': 'getGitHubResults'
+		'keyup #search': 'getGitHubResults',
+		'click body': 'closeOverlay'
 	},
 	
 	init: function() {
-		this.defaults = { github: "say2joe" };
+		this.defaults = { github: "Joe" };
 		this.cache.set('queries', []);
 		this.$el = $("#FEDTest");
 		this.DOM = this.DOM();
