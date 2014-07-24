@@ -1,0 +1,190 @@
+/* normalize.css has been included before this file */
+template { display: none; }
+
+
+/* The following are general styles applied to all devices. */
+body {
+	font-family: 'Source Code Pro', Arial, Helvetica, serif; font-weight: 400; 
+	background: rgb(2, 29, 56) url(../ghwall.png);
+	background-position: center 20%;
+	background-repeat: repeat-y;
+	text-align: center;
+	padding: 15px;
+}
+
+h1 {
+	letter-spacing: 0.125em;
+	font-weight: 600;
+	color: #ccc
+}
+
+nav {
+	position: relative;
+}
+
+input {
+	font-size: 1.125em;
+	font-weight: 600;
+}
+
+ul li {
+	list-style-type: none;
+	line-height: 1.75em;
+	margin-left: -40px;
+	cursor: pointer;
+	color: #fff;
+}
+
+ul li:hover {
+	border: 1px solid #25f;
+	border-radius: 9px;
+	font-size: 1.125em;
+	line-height: 2em;
+}
+
+ul li.repo span {
+	padding: 7px;
+}
+
+.repo .owner {
+	opacity: 0.8;
+}
+
+.repo .owner:before {
+	content: "(Owner: "
+}
+
+.repo .owner:after {
+	content: ")"
+}
+
+.repo .name:before {
+	content: "Repo: "
+}
+
+.repo .url:before {
+	content: "URL: "
+}
+
+.repo .description:before {
+	content: "Description: "
+}
+
+.repo .followers:before {
+	content: "Followers: "
+}
+
+.repo .language:before {
+	content: "Language: "
+}
+
+#search-submit { /* I'm using a data-uri backbround image for the right arrow indicator in the search field. While slightly larger (~2.5K) than the equivalent PNG (~1.8K), I've employed this technique merely for demonstration. */
+	/* background-image: url(data:image/png;base64,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); */
+	top: 13%; right: 16%;
+	position: absolute;
+	outline: none;
+}
+
+#results-container {
+	background-color: rgba(2, 29, 56, 0.8);
+	margin: 15px auto;
+	display: none;
+}
+
+#overlay-container {
+	text-align: justify;
+	min-height: 100px;
+	position: fixed;
+	display: none;
+	left: 50%;
+	top: 33px;
+}
+
+#overlay-container > .repo {
+	background-color: rgba(0, 0, 0, 0.9);
+	position: relative;
+	color: white;
+	width: 100%;
+	left: -50%;
+}
+
+#overlay-container a {
+	color: white !important;
+	font-weight: bold;
+}
+
+.rwd-base {
+	border: 3px inset rgb(2, 29, 56);
+	border-radius: 15px;
+	text-align: center;
+	outline: none;
+	padding: 7px;
+	width: 67%;
+}
+
+
+
+/* The following media queries are taken from CSS-Tricks... 
+	not due to laziness, rather from the standpoint they do
+	a great job of keeping up with the latest CSS standards. */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+/* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+/* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}
